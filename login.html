@@ -2,11 +2,16 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spotify Clone - Student Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Spotify Clone - Demonstration</title>
   
+  <!-- Configurações para o PWA no iPhone / iOS -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#1db954">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Spotify Clone">
+  <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/174/174872.png">
 
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,54 +23,54 @@
       <h1>Spotify Clone</h1>
     </div>
 
-    <!-- Banner de Isenção (Evita o bloqueio de segurança/phishing) -->
+    <!-- Banner de projeto acadêmico -->
     <div class="demo-disclaimer" style="background: #282828; color: #b3b3b3; padding: 10px; border-radius: 6px; font-size: 11px; margin-bottom: 16px; text-align: center; border: 1px solid #1db954;">
       <i class="fa-solid fa-graduation-cap" style="color: #1db954; font-size: 14px;"></i><br>
       <strong>PROJETO ACADÊMICO DE ESTUDO</strong><br>
-      Este site é uma demonstração educacional sem fins lucrativos.<br>
-      <strong>Não insira suas credenciais reais do Spotify.</strong>
+      Esta é uma demonstração educacional.<br>
+      Use dados fictícios para teste.
     </div>
 
     <div class="auth-tabs">
-      <button id="tab-login" class="tab-btn active">Entrar</button>
-      <button id="tab-signup" class="tab-btn">Cadastrar</button>
+      <button id="tab-login" class="tab-btn active" type="button">Entrar</button>
+      <button id="tab-signup" class="tab-btn" type="button">Cadastrar</button>
     </div>
 
     <!-- Form 1: Entrar -->
     <form id="form-login" class="auth-form">
       <div class="input-group">
         <label for="login-email">E-mail de Teste</label>
-        <input type="email" id="login-email" required placeholder="seu_email_de_teste@exemplo.com">
+        <input type="email" id="login-email" required placeholder="teste@exemplo.com" autocomplete="username">
       </div>
       <div class="input-group">
-        <label for="login-password">Senha de Teste</label>
-        <input type="password" id="login-password" required placeholder="Sua senha de teste">
+        <label for="login-password">Senha</label>
+        <input type="password" id="login-password" required placeholder="Sua senha" autocomplete="current-password">
       </div>
-      <button type="submit" class="btn-primary btn-block">Entrar na Demonstração</button>
+      <button type="submit" class="btn-primary btn-block">Entrar</button>
     </form>
 
     <!-- Form 2: Criar Conta -->
     <form id="form-signup" class="auth-form hidden">
       <div class="input-group">
-        <label for="signup-email">E-mail para Cadastro</label>
-        <input type="email" id="signup-email" required placeholder="seu_email_de_teste@exemplo.com">
+        <label for="signup-email">E-mail de Cadastro</label>
+        <input type="email" id="signup-email" required placeholder="teste@exemplo.com" autocomplete="username">
       </div>
       <div class="input-group">
-        <label for="signup-password">Senha de Teste</label>
-        <input type="password" id="signup-password" required placeholder="Mínimo 6 caracteres">
+        <label for="signup-password">Senha (mínimo 6 caracteres)</label>
+        <input type="password" id="signup-password" required placeholder="Criar senha" autocomplete="new-password">
       </div>
-      <button type="submit" class="btn-primary btn-block">Criar Conta de Teste</button>
+      <button type="submit" class="btn-primary btn-block">Criar Conta</button>
     </form>
 
-    <p id="auth-error" class="error-message"></p>
+    <p id="auth-error" class="error-message" style="color: #ff5555; font-size: 13px; margin-top: 12px; text-align: center; font-weight: bold;"></p>
   </div>
 
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('./sw.js');
+      navigator.serviceWorker.register('./sw.js').catch(() => {});
     }
   </script>
-  <script type="module" src="./firebaseconfig.js"></script>
+  <script type="module" src="firebaseconfig.js"></script>
   <script type="module" src="auth.js"></script>
 </body>
 </html>
